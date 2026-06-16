@@ -1,0 +1,17 @@
+---
+const { current = '', home = false } = Astro.props;
+const links = [
+  { href: '/weddings/', label: 'Weddings', key: 'weddings' },
+  { href: '/events/', label: 'Events', key: 'events' },
+  { href: '/portfolio/', label: 'Portfolio', key: 'portfolio' },
+  { href: '/enquire/', label: 'Enquire', key: 'enquire' },
+];
+---
+<nav class={`top${home ? ' home' : ''}`} id="topnav">
+  <a href="/" class="mark"><span class="lspc lspc-34">JAPONICA</span></a>
+  <div class="links">
+    {links.map(l => (
+      <a href={l.href} class={current === l.key ? 'current' : ''}><span class="lspc lspc-28">{l.label}</span></a>
+    ))}
+  </div>
+</nav>

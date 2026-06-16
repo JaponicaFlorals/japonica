@@ -1,0 +1,82 @@
+# Sveltia CMS — Japonica
+# IMPORTANT: set `repo` to Megan's GitHub repo (e.g. megankjestrup/japonica) before going live.
+backend:
+  name: github
+  repo: JaponicaFlorals/japonica
+  branch: main
+
+media_folder: "public/img/uploads"
+public_folder: "img/uploads"
+
+site_url: https://japonica.com.au
+display_url: https://japonica.com.au
+
+collections:
+  - name: weddings
+    label: "Real weddings (Portfolio)"
+    label_singular: "Wedding"
+    folder: "src/content/weddings"
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{fields.couple | slugify}}"
+    summary: "{{fields.couple}} — {{fields.venue}}"
+    sortable_fields: [order, date]
+    fields:
+      - { name: couple, label: "Couple", widget: string }
+      - { name: venue, label: "Venue", widget: string }
+      - { name: date, label: "Date (e.g. November 2025)", widget: string }
+      - { name: photographer, label: "Photographer", widget: string, required: false }
+      - { name: photographer_url, label: "Photographer link", widget: string, required: false }
+      - { name: feature, label: "Featured in (e.g. Hello May)", widget: string, required: false }
+      - { name: feature_url, label: "Feature link", widget: string, required: false }
+      - { name: review, label: "Couple review (optional)", widget: text, required: false }
+      - { name: cover, label: "Cover image (couple at ceremony)", widget: image }
+      - name: gallery
+        label: "Gallery (8 photos)"
+        widget: list
+        field: { name: image, label: Photo, widget: image }
+      - { name: order, label: "Order on page", widget: number, default: 1, value_type: int }
+      - { name: body, label: "Short description", widget: text }
+
+  - name: testimonials
+    label: "Testimonials"
+    label_singular: "Testimonial"
+    folder: "src/content/testimonials"
+    create: true
+    extension: md
+    format: frontmatter
+    fields:
+      - { name: author, label: "Couple / author", widget: string }
+      - { name: show_on, label: "Show on page", widget: select, options: [home, weddings, portfolio], default: home }
+      - { name: order, label: "Order", widget: number, default: 1, value_type: int }
+      - { name: body, label: "Quote", widget: text }
+
+  - name: studio
+    label: "From the studio (homepage feed)"
+    label_singular: "Studio post"
+    folder: "src/content/studio"
+    create: true
+    extension: json
+    fields:
+      - { name: image, label: "Image", widget: image }
+      - { name: link, label: "Instagram post link", widget: string, default: "https://www.instagram.com/__japonica__" }
+      - { name: alt, label: "Alt text", widget: string, required: false, default: "Japonica floral work" }
+      - { name: order, label: "Order", widget: number, default: 1, value_type: int }
+
+  - name: galleries
+    label: "Wedding galleries (Bouquets, Ceremony, etc.)"
+    label_singular: "Gallery"
+    folder: "src/content/galleries"
+    create: false
+    delete: false
+    extension: json
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: blurb, label: "Description", widget: text }
+      - { name: cover, label: "Cover image", widget: image }
+      - name: images
+        label: "Gallery images"
+        widget: list
+        field: { name: image, label: Photo, widget: image }
+      - { name: order, label: "Order", widget: number, value_type: int }

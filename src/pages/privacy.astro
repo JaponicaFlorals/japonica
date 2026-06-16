@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Japonica · Privacy" description="How Japonica handles the information you share." >
+<header class="page-header">
+  <div class="crumb"><span class="lspc lspc-32">How we handle your information</span></div>
+  <h1>Privacy</h1>
+  <p>This is what happens to the information you share with us through the enquiry form, by email or by phone.</p>
+</header>
+
+<section class="terms">
+
+  <section>
+    <h2>What we collect</h2>
+    <p>When you fill out the enquiry form on this website, we collect your name and your partner's name, email, phone number, wedding or event date, ceremony and reception venues, approximate guest count, estimated budget and any details you share about the day. We also collect any inspiration images or notes you choose to upload.</p>
+    <p>When you contact us by email or phone, we collect what you choose to share.</p>
+  </section>
+
+  <section>
+    <h2>How we use it</h2>
+    <p>We use your information to respond to your enquiry, prepare your quote and plan your wedding or event with you. Once you become a client we use it to coordinate with venues and other suppliers on your behalf and to deliver the florals on the day.</p>
+    <p>We do not sell your information. We do not share it with third parties beyond what is necessary to deliver the work you have booked us for.</p>
+  </section>
+
+  <section>
+    <h2>The enquiry form</h2>
+    <p>The enquiry form on this website is delivered through a service called <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>, which acts as a secure pipeline to forward submissions to our email. Web3Forms is based in the United States. Your form submission passes through their servers on the way to us. They do not retain submission content beyond delivery and they do not use it for advertising or any other purpose.</p>
+  </section>
+
+  <section>
+    <h2>How long we keep it</h2>
+    <p>Enquiries that do not become bookings are retained in our email for up to two years and then deleted. Bookings are retained for the duration of our service plus seven years, for tax and business record purposes.</p>
+  </section>
+
+  <section>
+    <h2>Cookies and tracking</h2>
+    <p>This website does not use marketing cookies or third-party analytics. Web fonts are loaded from Google Fonts. No tracking pixels, no advertising tags.</p>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p>You can ask us at any time to confirm what information we hold about you, correct it or delete it. Email <a href="mailto:florals@japonica.com.au">florals@japonica.com.au</a> and we will respond within 14 days.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about how we handle your information should go to <a href="mailto:florals@japonica.com.au">florals@japonica.com.au</a>.</p>
+    <p>Japonica Floral Studio · ABN 40 877 110 552 · Ryde, Sydney</p>
+  </section>
+
+</section>
+</BaseLayout>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-weight: 400; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  .lspc { display: inline-block; }
+  .lspc-22 { letter-spacing: 0.22em; margin-right: -0.22em; }
+  .lspc-28 { letter-spacing: 0.28em; margin-right: -0.28em; }
+  .lspc-32 { letter-spacing: 0.32em; margin-right: -0.32em; }
+  .lspc-34 { letter-spacing: 0.34em; margin-right: -0.34em; }
+  .lspc-36 { letter-spacing: 0.36em; margin-right: -0.36em; }
+
+  nav.top { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 22px 56px; background: rgba(239, 233, 220, 0.95); backdrop-filter: blur(6px); color: var(--ink); border-bottom: 0.5px solid rgba(53, 42, 53, 0.08); }
+  nav.top .mark { font-family: var(--display); font-size: 20px; }
+  nav.top .links { display: flex; gap: 36px; font-size: 11px; text-transform: uppercase; font-weight: 500; }
+  nav.top .links a { transition: opacity 0.3s; }
+  nav.top .links a:hover { opacity: 0.55; }
+
+  .page-header { padding: 160px 56px 64px; text-align: center; max-width: 760px; margin: 0 auto; }
+  .page-header .crumb { font-size: 11px; text-transform: uppercase; color: var(--stone); margin-bottom: 24px; }
+  .page-header h1 { font-family: var(--display); font-size: clamp(48px, 7vw, 88px); font-weight: 400; line-height: 1; color: var(--ink); margin-bottom: 24px; }
+  .page-header p { font-size: 17px; color: var(--ink-soft); line-height: 1.7; }
+
+  .terms { max-width: 780px; margin: 0 auto; padding: 32px 24px 96px; }
+  .terms section { padding: 32px 0; border-top: 0.5px solid rgba(53, 42, 53, 0.12); }
+  .terms section:last-of-type { border-bottom: 0.5px solid rgba(53, 42, 53, 0.12); }
+  .terms h2 { font-family: var(--display); font-size: clamp(22px, 2.8vw, 28px); font-weight: 400; line-height: 1.2; margin-bottom: 14px; }
+  .terms p { font-size: 16px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 12px; }
+  .terms p:last-child { margin-bottom: 0; }
+  .terms a { border-bottom: 0.5px solid rgba(53, 42, 53, 0.35); }
+
+  footer { background: var(--ink); color: var(--bg); padding: 96px 56px 48px; }
+  .foot-top { max-width: 1400px; margin: 0 auto 72px; text-align: center; padding-bottom: 48px; border-bottom: 0.5px solid rgba(239, 233, 220, 0.15); }
+  .foot-mark { font-family: var(--display); font-size: 44px; margin-bottom: 18px; letter-spacing: 0.18em; padding-left: 0.18em; display: inline-block; }
+  .foot-philo { font-family: var(--display); font-size: 15px; opacity: 0.7; line-height: 1.7; letter-spacing: 0.02em; }
+  .foot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; max-width: 1400px; margin: 0 auto; }
+  .foot-col { text-align: center; }
+  .foot-h { font-size: 10px; text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; }
+  .foot-line { font-size: 14px; line-height: 1.9; opacity: 0.88; display: block; }
+  .foot-line:hover { opacity: 0.6; transition: opacity 0.3s; }
+  .foot-meta { max-width: 1400px; margin: 80px auto 0; padding-top: 32px; border-top: 0.5px solid rgba(239, 233, 220, 0.15); display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 28px; text-align: center; font-size: 11px; text-transform: uppercase; opacity: 0.5; }
+  .foot-meta a { border-bottom: 0.5px solid rgba(239, 233, 220, 0.3); padding-bottom: 1px; }
+
+  @media (max-width: 880px) {
+    nav.top { padding: 14px 20px; flex-wrap: wrap; row-gap: 8px; }
+    nav.top .mark { font-size: 17px; }
+    nav.top .links { width: 100%; justify-content: center; gap: 16px; font-size: 10px; }
+    nav.top .links .lspc-28 { letter-spacing: 0.08em; margin-right: -0.08em; }
+    .page-header { padding: 120px 24px 48px; }
+    .terms { padding: 24px 8px 72px; }
+    .foot-grid { grid-template-columns: 1fr; gap: 40px; }
+    .foot-mark { font-size: 34px; }
+    footer { padding: 64px 24px 32px; }
+    .foot-meta { flex-direction: column; gap: 12px; font-size: 12px; } .foot-line { font-size: 15px; } .foot-h { font-size: 11px; }
+  }
+</style>
