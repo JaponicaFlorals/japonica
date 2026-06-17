@@ -4,6 +4,7 @@ backend:
   name: github
   repo: JaponicaFlorals/japonica
   branch: main
+  base_url: https://sveltia-cms-auth.florals.workers.dev
 
 media_folder: "public/img/uploads"
 public_folder: "img/uploads"
