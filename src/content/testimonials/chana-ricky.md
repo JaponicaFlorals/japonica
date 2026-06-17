@@ -1,5 +1,5 @@
 ---
-author: Chana & Ric
+author: Chana & Ricky
 show_on: weddings
 order: 1
 ---
