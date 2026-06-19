@@ -1,42 +1,51 @@
 # Japonica — japonica.com.au
 
-Astro static site for Japonica Floral Studio. Editable content (real weddings, testimonials, the homepage "From the studio" feed, and the wedding galleries) is managed through Sveltia CMS at `/admin`.
+Astro static site for Japonica Floral Studio. **Live and fully set up.** This README is the maintainer's guide — read it first if you're picking the project back up.
 
-## Run locally
-```bash
-npm install
-npm run dev      # http://localhost:4321
-npm run build    # outputs to dist/
-```
+## Live setup (as of June 2026)
 
-## Tech
-- Astro (static output) — clean URLs (`/weddings`, `/portfolio`, ...)
-- Content Collections in `src/content` (testimonials, studio, weddings, galleries)
-- Sveltia CMS in `public/admin` (GitHub backend)
-- Forms via Web3Forms (access key already wired into the two enquiry forms)
-- Images in `public/img`; CMS uploads go to `public/img/uploads`
+- **Domain:** `japonica.com.au` — registered at **Netfleet**, DNS managed by **Cloudflare** (nameservers `ashley` / `rocky.ns.cloudflare.com`).
+- **Hosting:** **Cloudflare Pages** project **`japonica`**, connected to this GitHub repo (branch `main`). Every push to `main` auto-builds (`npm run build`) and deploys. No manual upload needed.
+- **Repo:** `github.com/JaponicaFlorals/japonica`
+- **CMS:** **Sveltia CMS** at `/admin`, GitHub backend. Login runs through the **sveltia-cms-auth** Cloudflare Worker at `https://sveltia-cms-auth.florals.workers.dev` (GitHub OAuth app "Japonica CMS", repo `JaponicaFlorals/sveltia-cms-auth`).
+- **Email:** `florals@japonica.com.au` hosted at **SureServer** — unchanged (MX → `mail.japonica.com.au` → `116.251.204.41`). Email DNS records live in Cloudflare; do not delete them.
+- **Forms:** **Web3Forms** (public key embedded in the two enquiry pages) → delivers to `florals@japonica.com.au`.
+- **SEO:** `public/sitemap.xml` (10 pages) + `public/robots.txt`; submitted to **Google Search Console**.
 
-## Deploy (Cloudflare Pages)
-1. Push this repo to **Megan's GitHub** (repo name e.g. `japonica`).
-2. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → pick the repo.
-3. Build settings: **Framework preset: Astro**, Build command `npm run build`, Output directory `dist`.
-4. Deploy → you get a `*.pages.dev` URL. Later, add the custom domain `japonica.com.au` (see DNS notes).
+## Making changes
 
-## Sveltia CMS setup (so Megan can edit at japonica.com.au/admin)
-1. In `public/admin/config.yml`, set `repo: <megan-github-username>/japonica`.
-2. Create a **GitHub OAuth App** (GitHub → Settings → Developer settings → OAuth Apps):
-   - Homepage URL: `https://japonica.com.au`
-   - Authorization callback URL: your auth worker URL (next step) + `/callback`
-3. Deploy the small **sveltia-cms-auth** Cloudflare Worker (one-click template: https://github.com/sveltia/sveltia-cms-auth) and set its `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` from the OAuth App.
-4. Add `base_url: https://<your-auth-worker>` under `backend:` in `config.yml`.
-5. Megan visits `japonica.com.au/admin`, signs in with GitHub, and can add/edit weddings, testimonials, the studio feed and galleries. Saving commits to the repo and Cloudflare auto-rebuilds.
+### Content — Megan, no code
+Go to `japonica.com.au/admin` → sign in with GitHub → edit **weddings, testimonials, the homepage "From the studio" feed, and the wedding galleries** → **Publish**. This commits to the repo and Cloudflare rebuilds in ~1–2 minutes.
+
+### Code / copy / design — developer
+1. **Pull** this repo first (so you have Megan's latest CMS edits).
+2. `npm install` then `npm run dev` → http://localhost:4321
+3. Edit, then **commit + push to `main`**. Cloudflare auto-deploys.
+
+> Page body copy (home philosophy, events, process, FAQ, booking terms, privacy) lives in the `.astro` page files — **not** the CMS. Only weddings, testimonials, studio feed and galleries are CMS-editable.
+
+> One working copy: this repo (and your local clone) is the single source of truth. Always pull before editing, because the CMS writes directly to `main`.
+
+## Tech / structure
+
+- Astro (static output), clean URLs (`/weddings`, `/portfolio`, …).
+- `src/pages/*.astro` — the pages. `src/layouts/BaseLayout.astro` — shared shell. `src/components/` — Nav, Footer. `src/styles/global.css` — tokens + shared styles.
+- `src/content/` — Content Collections: `weddings`, `testimonials`, `studio`, `galleries`.
+- Images in `public/img`; CMS uploads land in `public/img/uploads`.
 
 ## Content model
-- `src/content/weddings/*.md` — portfolio weddings (couple, venue, date, photographer + link, optional feature/review, cover, gallery of 8, order, short description as body).
-- `src/content/testimonials/*.md` — quote (body) + author + which page it shows on.
-- `src/content/studio/*.json` — homepage feed tiles (image + Instagram link).
-- `src/content/galleries/*.json` — the four wedding galleries (Bouquets, Ceremony pieces, Tablescapes, Ceiling installations).
 
-## Notes
-- Web3Forms key is public by design (lives in the enquiry pages). Enquiries go to florals@japonica.com.au.
-- DNS: domain is registered at Netfleet; cut over by pointing nameservers to Cloudflare once ready (check MX/email first).
+- `src/content/weddings/*.md` — portfolio weddings (couple, venue, date, photographer + link, optional feature/review, cover, gallery of 8, order, short description as body).
+- `src/content/testimonials/*.md` — quote (body) + author + which page it shows on (home / weddings / portfolio).
+- `src/content/studio/*.json` — homepage "From the studio" tiles (image + Instagram link). Curated, not an auto feed.
+- `src/content/galleries/*.json` — the four signature galleries (Bouquets, Ceremony pieces, Tablescapes, Ceiling installations).
+
+## Accounts behind the site
+
+Netfleet (domain) · Cloudflare (hosting + DNS) · SureServer (email) · GitHub `JaponicaFlorals` (code + CMS login) · Web3Forms (enquiry forms) · Google Search Console (search). Login locations are in the owner's handbook.
+
+## Housekeeping
+
+- The old **Squarespace** site is retired — safe to cancel that subscription.
+- A redundant **direct-upload** Pages project (`japonica-website`) exists from the initial launch; the live site is now the Git-connected **`japonica`** project, so `japonica-website` can be deleted.
+- The Web3Forms key is public by design (it lives in the page HTML).
