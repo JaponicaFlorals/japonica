@@ -3,8 +3,8 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 const {
-  title = 'Japonica · Sydney Wedding Floral Studio',
-  description = 'Japonica is a Sydney wedding and event floral studio in Ryde. Garden-inspired, seasonal floristry — bouquets, ceremony pieces, tablescapes and installations. By appointment.',
+  title = 'Japonica · Sydney wedding floral studio',
+  description = 'Japonica is a garden-inspired Sydney wedding and event florist in Ryde. Bouquets, ceremony pieces, tablescapes and ceiling installations.',
   current = '',
   home = false,
   fontItalic = false,
@@ -40,6 +40,22 @@ const fontHref = fontItalic
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Japonica",
+    "legalName": "Japonica Floral Studio",
+    "url": "https://japonica.com.au/",
+    "image": ogImage,
+    "logo": new URL('/android-chrome-512.png', Astro.site).href,
+    "description": "Garden-inspired Sydney wedding and event floral studio in Ryde.",
+    "email": "florals@japonica.com.au",
+    "telephone": "+61 404 466 093",
+    "founder": { "@type": "Person", "name": "Megan Kjestrup", "jobTitle": "Florist and owner" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Ryde", "addressRegion": "NSW", "postalCode": "2112", "addressCountry": "AU" },
+    "areaServed": "Sydney",
+    "sameAs": ["https://www.instagram.com/__japonica__", "https://www.facebook.com/japonicaweddingsevents/"]
+  })} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href={fontHref} rel="stylesheet" />

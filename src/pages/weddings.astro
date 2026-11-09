@@ -7,7 +7,7 @@ const t = tlist.find(x=>x.data.show_on==='weddings') || tlist[0];
 const quote = t ? t.body.trim() : '';
 const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data.title, images: g.data.images.map(i=>'/'+i) }]));
 ---
-<BaseLayout title="Weddings · Japonica" description="Garden-inspired wedding floristry for Sydney — bouquets, ceremony pieces, tablescapes and ceiling installations. By appointment, from Ryde." current="weddings" fontItalic={true}>
+<BaseLayout title="Weddings · Japonica" description="Garden-inspired wedding flowers for Sydney: bouquets, ceremony pieces, tablescapes and ceiling installations. By appointment, from Ryde." current="weddings" fontItalic={true}>
   <header class="page-header">
     <div class="crumb"><span class="lspc lspc-32">Japonica &middot; The work</span></div>
     <h1>Weddings</h1>
@@ -15,7 +15,7 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
   </header>
 
   <div class="hero-strip wed">
-    <img src="/img/hero-weddings.jpg" alt="Statement ceremony installation — a ground floral nest overlooking the water" />
+    <img src="/img/hero-weddings.jpg" alt="Statement ceremony installation: a ground floral nest overlooking the water" />
   </div>
 
   <section class="intro-section">
@@ -51,6 +51,10 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
       <div class="narrative-body">
         <p class="reveal">We begin with your venue, the season, and the vision you have for your day. From there, we thoughtfully shape a floral design that feels uniquely yours, refining every detail together in the months leading up to your wedding.</p>
       </div>
+      <div class="tl-pair reveal">
+        <figure><video src="/media/japonica-tl-athol.mp4" poster="/media/japonica-tl-athol-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Athol Hall"></video><figcaption><span class="lspc lspc-32">Athol Hall</span></figcaption></figure>
+        <figure><video src="/media/japonica-tl-gunners.mp4" poster="/media/japonica-tl-gunners-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Gunners Barracks"></video><figcaption><span class="lspc lspc-32">Gunners Barracks</span></figcaption></figure>
+      </div>
       <div class="process-footer reveal">
         <a href="/process/" class="process-link"><span class="lspc lspc-28">See the full six-step process</span></a>
       </div>
@@ -58,6 +62,7 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
   </section>
 
   <section class="testimonial-section">
+    <h2 class="vh">Kind words</h2>
     <div class="testimonial">
       <div class="quote-glyph reveal">&ldquo;</div>
       <div class="quote-body reveal">{quote}</div>
@@ -119,13 +124,18 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
   .elements-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; max-width: 1500px; margin: 0 auto; align-items: start; }
   button.element { appearance: none; border: 0; background: transparent; padding: 0; margin: 0; font: inherit; color: inherit; text-align: left; width: 100%; cursor: pointer; }
   .element-frame { position: relative; aspect-ratio: 4/5; overflow: hidden; background: #b8a98c; border-radius: var(--radius); margin-bottom: 22px; }
-  .element-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s ease; }
+  .element-frame img, .element-frame video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.6s ease; }
   .element:hover .element-frame img { transform: scale(1.03); }
   .element-cue { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(20,15,15,0.32); color: var(--bg); font-size: 11px; text-transform: uppercase; opacity: 0; transition: opacity 0.4s ease; }
   button.element:hover .element-cue, button.element:focus-visible .element-cue { opacity: 1; }
   button.element:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
   .element h3 { font-family: var(--display); font-size: 22px; font-weight: 400; margin-bottom: 10px; color: var(--ink); }
   .element p { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+  .tl-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 900px; margin: 56px auto 0; }
+  .tl-pair figure { margin: 0; }
+  .tl-pair video { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; border-radius: var(--radius); background: #b8a98c; }
+  .tl-pair figcaption { margin-top: 16px; text-align: center; font-size: 11px; text-transform: uppercase; color: var(--ink-soft); }
+  @media (max-width: 880px) { .tl-pair { gap: 12px; margin-top: 40px; } }
   .process-section { padding: 96px 56px; }
   .process { max-width: 1100px; margin: 0 auto; }
   .proc-header { text-align: center; margin-bottom: 64px; }
@@ -136,14 +146,14 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
   .process-footer { text-align: center; margin-top: 48px; }
   .process-link { font-size: 12px; text-transform: uppercase; color: var(--ink); border-bottom: 0.5px solid rgba(53,42,53,0.35); padding-bottom: 4px; transition: opacity 0.3s; }
   .process-link:hover { opacity: 0.6; }
-  .testimonial-section { padding: 72px 56px; }
+  .testimonial-section { padding: 120px 56px; background: var(--bg-soft); }
   .closer-section { padding: 80px 56px 132px; text-align: center; }
   .closer h2 { font-family: var(--display); font-size: clamp(30px,4.4vw,52px); line-height: 1.25; margin-bottom: 48px; font-weight: 400; }
   .closer-byline { margin-top: 36px; font-size: 11px; text-transform: uppercase; color: var(--stone); }
   @media (max-width: 880px) {
     .intro-section, .process-section { padding: 56px 24px; }
     .signature { padding: 56px 24px; }
-    .testimonial-section { padding: 48px 24px; }
+    .testimonial-section { padding: 96px 24px; }
     .closer-section { padding: 56px 24px 88px; }
     .elements-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   }

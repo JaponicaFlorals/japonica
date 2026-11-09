@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Japonica · Our process" description="How we work together — six steps from your first enquiry to your wedding day, with Japonica." >
+<BaseLayout title="Our process · Japonica" description="How booking Japonica works, in six steps from your first enquiry to your wedding day. Garden-inspired wedding flowers from Ryde, Sydney." >
 <header class="page-header">
   <div class="crumb"><span class="lspc lspc-32">Japonica · How we work together</span></div>
   <h1>Our process</h1>
@@ -65,6 +65,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 </section>
 
+<section class="tl-section">
+  <div class="tl-head">
+    <div class="tl-label reveal"><span class="lspc lspc-36">On the day</span></div>
+    <h2 class="reveal">Watch it come together</h2>
+  </div>
+  <div class="tl-pair reveal">
+    <figure><video src="/media/japonica-tl-athol.mp4" poster="/media/japonica-tl-athol-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Athol Hall"></video><figcaption><span class="lspc lspc-32">Athol Hall</span></figcaption></figure>
+    <figure><video src="/media/japonica-tl-gunners.mp4" poster="/media/japonica-tl-gunners-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Gunners Barracks"></video><figcaption><span class="lspc lspc-32">Gunners Barracks</span></figcaption></figure>
+  </div>
+</section>
+
 <section class="closer-section">
   <div class="closer">
     <h2 class="reveal">Ready to start?</h2>
@@ -101,6 +112,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.1s ease-out, transform 1.1s ease-out; }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
+  .tl-section { padding: 0 56px 120px; max-width: 1100px; margin: 0 auto; }
+  .tl-head { text-align: center; margin-bottom: 48px; }
+  .tl-label { font-size: 11px; text-transform: uppercase; color: var(--stone); margin-bottom: 18px; }
+  .tl-head h2 { font-family: var(--display); font-size: clamp(32px,4vw,48px); font-weight: 400; color: var(--ink); }
+  .tl-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .tl-pair figure { margin: 0; }
+  .tl-pair video { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; border-radius: var(--radius); background: #b8a98c; }
+  .tl-pair figcaption { margin-top: 16px; text-align: center; font-size: 11px; text-transform: uppercase; color: var(--ink-soft); }
+  @media (max-width: 880px) { .tl-section { padding: 0 24px 88px; } .tl-pair { gap: 12px; } }
   .steps-wrap { padding: 80px 56px 140px; max-width: 1100px; margin: 0 auto; }
   .step-row { display: grid; grid-template-columns: 120px 1fr; gap: 56px; padding: 48px 0; border-top: 0.5px solid rgba(53, 42, 53, 0.12); align-items: start; }
   .step-row:last-of-type { border-bottom: 0.5px solid rgba(53, 42, 53, 0.12); }

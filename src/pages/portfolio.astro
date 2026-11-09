@@ -17,7 +17,7 @@ const data = Object.fromEntries(weddings.map(w=>[w.slug, {
 }]));
 const blurbs = Object.fromEntries(await Promise.all(weddings.map(async w=>[w.slug, w.body.trim()])));
 ---
-<BaseLayout title="Portfolio · Japonica" description="Real Sydney weddings by Japonica — a selection of recent floral work." current="portfolio" fontItalic={true}>
+<BaseLayout title="Portfolio · Japonica" description="Real Sydney weddings by Japonica, with florals at Athol Hall, Gunners Barracks and more. A selection of recent garden-inspired work." current="portfolio" fontItalic={true}>
   <header class="page-header">
     <div class="crumb"><span class="lspc lspc-32">Japonica &middot; Real weddings</span></div>
     <h1>Portfolio</h1>
@@ -38,6 +38,7 @@ const blurbs = Object.fromEntries(await Promise.all(weddings.map(async w=>[w.slu
   </section>
 
   <section class="testimonial-section">
+    <h2 class="vh">Kind words</h2>
     <div class="testimonial">
       <div class="quote-glyph reveal">&ldquo;</div>
       <div class="quote-body reveal">{quote}</div>

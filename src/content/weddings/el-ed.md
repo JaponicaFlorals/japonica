@@ -18,4 +18,4 @@ gallery:
   - "img/weddings/eled/eled-6.jpg"
   - "img/weddings/eled/eled-8.jpg"
 ---
-White, green and soft cream at Athol Hall — a suspended ceiling installation over the long reception table. As seen in Hello May.
+White, green and soft cream at Athol Hall, with a suspended ceiling installation over the long reception table. As seen in Hello May.
