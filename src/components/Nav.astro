@@ -8,7 +8,7 @@ const links = [
 ];
 ---
 <nav class={`top${home ? ' home' : ''}`} id="topnav">
-  <a href="/" class="mark"><span class="lspc lspc-34">JAPONICA</span></a>
+  <a href="/" class="mark" aria-label="Japonica home"><svg viewBox="-10 -24 365 740" aria-hidden="true"><path transform="scale(1,-1) translate(0,-700)" d="M104 -16Q76 -16 52.0 -7.5Q28 1 13.0 17.0Q-2 33 -2 55Q-2 75 8.5 90.5Q19 106 41 107Q66 109 75.5 93.5Q85 78 85 63Q85 59 84.0 52.5Q83 46 81 41Q87 31 100.0 27.5Q113 24 120 25Q150 26 164.5 52.0Q179 78 179 139V571Q179 594 179.0 616.0Q179 638 179 660Q154 659 128.5 658.0Q103 657 77 656V700H343V667Q310 667 293.5 654.0Q277 641 271.5 618.5Q266 596 266 568V244Q266 103 228.0 43.5Q190 -16 104 -16Z" fill="currentColor"/></svg></a>
   <div class="links">
     {links.map(l => (
       <a href={l.href} class={current === l.key ? 'current' : ''}><span class="lspc lspc-28">{l.label}</span></a>

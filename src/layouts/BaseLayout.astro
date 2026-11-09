@@ -18,6 +18,7 @@ const fontHref = fontItalic
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script is:inline>document.documentElement.classList.add('js')</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
@@ -65,8 +66,16 @@ const fontHref = fontItalic
   <slot />
   <Footer />
   <script>
+    // Items that arrive together reveal 90ms apart (capped at 360ms); grids marked .stagger cascade their children.
+    document.querySelectorAll('.reveal.stagger').forEach(g => [...g.children].forEach((c, i) => c.style.setProperty('--i', String(Math.min(i, 5)))));
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      let n = 0;
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.style.setProperty('--rd', Math.min(n++ * 90, 360) + 'ms');
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     const nav = document.getElementById('topnav');

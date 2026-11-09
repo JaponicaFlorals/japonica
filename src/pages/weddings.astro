@@ -31,7 +31,7 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
       <div class="label reveal"><span class="lspc lspc-36">Signature elements</span></div>
       <h2 class="reveal">From the bouquet to the install</h2>
     </div>
-    <div class="elements-grid reveal">
+    <div class="elements-grid reveal stagger">
       {galleries.map(g => (
         <button type="button" class="element" data-gallery={g.id}>
           <div class="element-frame"><img src={`/${g.data.cover}`} alt={g.data.title} /><span class="element-cue"><span class="lspc lspc-22">View gallery</span></span></div>
@@ -51,7 +51,7 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
       <div class="narrative-body">
         <p class="reveal">We begin with your venue, the season, and the vision you have for your day. From there, we thoughtfully shape a floral design that feels uniquely yours, refining every detail together in the months leading up to your wedding.</p>
       </div>
-      <div class="tl-pair reveal">
+      <div class="tl-pair reveal stagger">
         <figure><video src="/media/japonica-tl-athol.mp4" poster="/media/japonica-tl-athol-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Athol Hall"></video><figcaption><span class="lspc lspc-32">Athol Hall</span></figcaption></figure>
         <figure><video src="/media/japonica-tl-gunners.mp4" poster="/media/japonica-tl-gunners-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Gunners Barracks"></video><figcaption><span class="lspc lspc-32">Gunners Barracks</span></figcaption></figure>
       </div>
