@@ -83,7 +83,9 @@ footer { background: var(--ink); color: var(--bg); padding: 96px 56px 48px; }
 @media (max-width: 880px) {
   nav.top, nav.top.home { padding: 14px 12px; flex-wrap: wrap; row-gap: 0; }
   nav.top.home.scrolled { padding: 12px 20px; }
-  nav.top .mark { display: none; }
+  nav.top { flex-direction: column; row-gap: 0; padding-top: 8px; }
+  nav.top .mark { position: static; transform: none; width: 44px; height: 36px; }
+  nav.top .mark svg { height: 22px; }
   nav.top .links { width: 100%; justify-content: center; flex-wrap: wrap; column-gap: 14px; row-gap: 0; font-size: 12px; margin-bottom: -10px; }
   nav.top .links a { padding: 12px 2px; }
   nav.top .links a.current { padding-bottom: 12px; border-bottom: 0; }
