@@ -52,8 +52,8 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
         <p class="reveal">We begin with your venue, the season, and the vision you have for your day. From there, we thoughtfully shape a floral design that feels uniquely yours, refining every detail together in the months leading up to your wedding.</p>
       </div>
       <div class="tl-pair reveal stagger">
-        <figure><video src="/media/japonica-tl-athol.mp4" poster="/media/japonica-tl-athol-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Athol Hall"></video><figcaption><span class="lspc lspc-32">Athol Hall</span></figcaption></figure>
-        <figure><video src="/media/japonica-tl-gunners.mp4" poster="/media/japonica-tl-gunners-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Gunners Barracks"></video><figcaption><span class="lspc lspc-32">Gunners Barracks</span></figcaption></figure>
+        <figure><video src="/media/japonica-tl-athol.mp4?v=2" poster="/media/japonica-tl-athol-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Athol Hall"></video><figcaption><span class="lspc lspc-32">Athol Hall</span></figcaption></figure>
+        <figure><video src="/media/japonica-tl-gunners.mp4?v=2" poster="/media/japonica-tl-gunners-poster.jpg" autoplay muted loop playsinline aria-label="Time-lapse of an installation at Gunners Barracks"></video><figcaption><span class="lspc lspc-32">Gunners Barracks</span></figcaption></figure>
       </div>
       <div class="process-footer reveal">
         <a href="/process/" class="process-link"><span class="lspc lspc-28">See the full six-step process</span></a>
@@ -91,6 +91,20 @@ const galleriesData = Object.fromEntries(galleries.map(g=>[g.id, { title: g.data
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  // The two time-lapses loop in step, so their closing zooms always finish
+  // together. Each waits for the other before both restart (10 November 2026).
+  const tl = Array.from(document.querySelectorAll('.tl-pair video'));
+  if (tl.length === 2) {
+    tl.forEach((v) => {
+      v.loop = false;
+      v.addEventListener('ended', () => {
+        if (tl.every((x) => x.ended)) tl.forEach((x) => { x.currentTime = 0; x.play().catch(() => {}); });
+      });
+    });
+  }
+</script>
 
 <script define:vars={{ galleries: galleriesData }}>
   const lb = document.getElementById('lightbox');
